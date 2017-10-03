@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <malloc.h>
 #include "utils.h"
 
 void mysh_parse_command(const char* command,
@@ -23,6 +24,12 @@ void mysh_parse_command(const char* command,
 		ptr=strtok(NULL," ");
 	}
 
-	*argv=wordArray;
+	//2D dynamic allocate
+	*argv=(char**)malloc(sizeof(char*)*wordcount);
+	for(int i=0;i<wordcount;i++){
+		*((*argv)+i)=(char*)malloc(sizeof(char)*length);
+		strcpy(*((*argv)+i),wordArray[i]);
+	}
+
 	*argc=wordcount;
 }
