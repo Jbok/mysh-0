@@ -7,7 +7,9 @@ int do_cd(int argc, char** argv) {
 	if (!validate_cd_argv(argc, argv))
 		return -1;
  	
-	chdir(argv[1]);
+	if(chdir(argv[1])==-1){
+		return -1;
+	}
 	return 0;
 }
 
