@@ -11,8 +11,9 @@ void mysh_parse_command(const char* command,
 	char buffer[8096]; //char array temporary save word
 	strcpy(buffer,command); //save string
 	
-	buffer[length-1]='\0'; //remove '\n' end of line
-
+	if(buffer[length-1]=='\n'){
+		buffer[length-1]='\0'; //remove '\n' end of line
+	}
 
 	int wordcount=0;
 	char *wordArray[8096]={};//string array temporary save words
