@@ -21,7 +21,9 @@ void mysh_parse_command(const char* command,
 	char *ptr=strtok(buffer," ");//pointer of word divided by " "
 	
 	while(ptr!=NULL){
-		wordArray[wordcount++]=ptr;
+		if(strcmp(ptr,"\n")!=0 && strcmp(ptr,"\t")!=0){
+			wordArray[wordcount++]=ptr;
+		}
 		ptr=strtok(NULL," ");
 	}
 
